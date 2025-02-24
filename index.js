@@ -7,4 +7,9 @@ for (let i = 0; i < DIV_NUMBER; i++) {
     container.appendChild(grid);
 }
 
-
+const divs = document.querySelectorAll(".grid-square")
+divs.forEach((div) => {
+    div.addEventListener("mouseenter", () => {
+        div.style.backgroundColor = "blue";
+    })
+})
