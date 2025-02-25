@@ -36,7 +36,16 @@ function removeGrid() {
 function addPainterAttribute() {
     divs.forEach((div) => {
         div.addEventListener("mouseenter", () => {
-            div.style.backgroundColor = "blue";
+            const color = randomRGB();
+            div.style.backgroundColor = color;
         })
     })
+}
+
+function randomColorNum() {
+    return Math.floor(Math.random() * 256);
+}
+
+function randomRGB() {
+    return `rgb(${randomColorNum()},${randomColorNum()},${randomColorNum()})`;
 }
