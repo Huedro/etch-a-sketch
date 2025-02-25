@@ -31,4 +31,6 @@ body {
 
 .btn {
     margin-bottom: 40px;
+    padding: 40px;
+    font-size: large;
 }

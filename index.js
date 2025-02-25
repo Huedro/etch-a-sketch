@@ -1,13 +1,7 @@
 const container = document.querySelector("#container");
+let divs = document.querySelectorAll(".grid-square");
 
-createGrid();
-
-const divs = document.querySelectorAll(".grid-square")
-divs.forEach((div) => {
-    div.addEventListener("mouseenter", () => {
-        div.style.backgroundColor = "blue";
-    })
-})
+newGrid();
 
 const button = document.querySelector("button");
 button.addEventListener("click", () => {
@@ -15,9 +9,11 @@ button.addEventListener("click", () => {
     if (gridDimension > 100) {
         gridDimension = 100;
     }
+    removeGrid();
+    newGrid(gridDimension);
 });
 
-function createGrid(gridDimension = 16){
+function newGrid(gridDimension = 16){    
     let divNumber = gridDimension * gridDimension;
     let divMinSize = (100 / gridDimension) + "%";
     for (let i = 0; i < divNumber; i++) {
@@ -27,8 +23,20 @@ function createGrid(gridDimension = 16){
         grid.style.minHeight = divMinSize;
         container.appendChild(grid);
     }
+    divs = document.querySelectorAll(".grid-square");
+    addPainterAttribute();
 }
 
-// Create ResetGrid function
-// grid-square sizes (and number of grids/divs) are hard coded, need to have and initial value
-// and change whenever the user clicks the button and enter a prompt. 
+function removeGrid() {
+    divs.forEach((div) => {
+        div.remove();
+    })
+}
+
+function addPainterAttribute() {
+    divs.forEach((div) => {
+        div.addEventListener("mouseenter", () => {
+            div.style.backgroundColor = "blue";
+        })
+    })
+}
