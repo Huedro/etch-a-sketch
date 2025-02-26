@@ -17,6 +17,7 @@ button.addEventListener("click", () => {
 function newGrid(gridDimension = 16){    
     let divNumber = gridDimension * gridDimension;
     let divMinSize = (100 / gridDimension) + "%";
+    actualOpacity = 0;
     for (let i = 0; i < divNumber; i++) {
         const grid = document.createElement("div");
         grid.classList.add("grid-square");
@@ -38,7 +39,7 @@ function addPainterAttribute() {
     divs.forEach((div) => {
         div.addEventListener("mouseenter", () => {
             const color = randomRGB(); 
-            div.style.backgroundColor = color;
+            div.style.backgroundColor = color;       
             div.style.opacity = riseOpacity(actualOpacity);
         });
     });
