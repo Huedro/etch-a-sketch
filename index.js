@@ -1,5 +1,6 @@
 const container = document.querySelector("#container");
 let divs = document.querySelectorAll(".grid-square");
+let actualOpacity = 0;
 
 newGrid();
 
@@ -36,10 +37,18 @@ function removeGrid() {
 function addPainterAttribute() {
     divs.forEach((div) => {
         div.addEventListener("mouseenter", () => {
-            const color = randomRGB();
+            const color = randomRGB(); 
             div.style.backgroundColor = color;
-        })
-    })
+            div.style.opacity = riseOpacity(actualOpacity);
+        });
+    });
+}
+
+function riseOpacity(opacity) {
+    if (opacity < 1) {
+        return actualOpacity += 0.10;
+    }
+    return actualOpacity;
 }
 
 function randomColorNum() {
